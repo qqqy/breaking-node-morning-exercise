@@ -21,3 +21,8 @@ app.listen(SERVER_PORT, () => {console.log("Server is now listening on " + SERVE
 app.get('/api/items' , (req, res) => {
   res.status(200).send(data)
 })
+
+app.post('/api/add_item' , (req, res) => {
+  req.body && data.push(req.body)
+  res.status(200).send(data)
+})
