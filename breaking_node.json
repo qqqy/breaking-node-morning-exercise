@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "1a1e1335-533a-47eb-8ffa-4a9d5402d8cf",
+		"name": "breaking-node-collection",
+		"description": "This is a collection of test you can use to break node!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET: All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52a1a0f7-927b-4bee-bf63-c57192477b2e",
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test(\"Array should have ten objects\" , () => {",
+							"    pm.expect(res.length).to.equal(10)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: Good Will Hunting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33beb6c6-5f41-4910-a8bc-0d10509ab327",
+						"exec": [
+							"pm.test(\"Should return 11 objects\" , () => {",
+							"    pm.expect(pm.response.json().length).to.equal(11)",
+							"})",
+							"",
+							"pm.test(\"11th should be Good Will Hunting\" , () => {",
+							"    pm.expect(pm.response.json()[10].name).to.equal(\"Good Will Hunting\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 11,\n\t\"name\": \"Good Will Hunting\",\n\t\"price\": \"$8.35\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/add_item",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"add_item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET: Good Will Hunting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4074de5-c5b3-46db-b4dc-ce40f12fd203",
+						"exec": [
+							"let res = pm.response.json();",
+							"",
+							"pm.test(\"Should return the Good Will Hunting Object\" , () => {",
+							"    pm.expect(res[0].name).to.equal(\"Good Will Hunting\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/items?id=11",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT: Price Change on Good Will Hunting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6bb1787a-604b-4a38-b171-2b8c337ef7df",
+						"exec": [
+							"const res = pm.response.json();",
+							"",
+							"pm.test(\"Expect price on 10th index to be '$5.32'\" , ()=> {",
+							"    pm.expect(res[10].price).to.equal(\"$5.32\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 11,\n\t\"name\": \"Good Will Hunting\",\n\t\"price\": \"$5.32\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/update/11",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"update",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE: Remove Good Will Hunting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d459ca0e-df37-47b3-9126-bb3d8d175942",
+						"exec": [
+							"const res = pm.response.json();",
+							"",
+							"pm.test(\"Expect there to be no 'Good Will Hunting' Object\" , () => {",
+							"    pm.expect(res.find((item) => item.name === \"Good Will Hunting\")).to.equal(undefined)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/delete/11",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"delete",
+						"11"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

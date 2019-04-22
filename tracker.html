@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   * {
+     padding: 0;
+     margin: 0;
+   }
+
+   body {
+     padding: 20px;
+   }
+
+   button {
+     padding: 5px 10px;
+   }
+
+   h3 {
+     margin-top: 10px;
+   }
+  </style>
+</head>
+<body>
+  <h1>Error Tracker</h1>
+  <p>WARNING: Do not refresh browser, or you'll lose your count!</p>
+  <h3>Hung Servers: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Failure to Run</h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Four-Zero-Four: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Five Hundred: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Cannot Set Headers: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Not a Function: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Cannot Read Property: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Cannot Fine Module: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Listening on Undefined: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Always Deletes Last: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Always Deletes First: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Deletes Everything: </h3>
+  <button>+</button>
+  <button>-</button>
+  <h3>Other: </h3>
+  <button>+</button>
+  <button>-</button>
+  
+  <script type="text/javascript">
+    let h3Array = document.getElementsByTagName("h3")
+    let buttonArray = document.getElementsByTagName("button")
+    let total = 0
+
+    let buttonIndex = 0
+    
+    for(let i = 0; i < h3Array.length ; i++){
+      h3Array[i].id = i
+      h3Array[i].innerText = h3Array[i].innerText + ' ' + 0
+      h3Array[i].count = 0
+      buttonArray[buttonIndex++].onclick=() => showScores(i , 1)
+      buttonArray[buttonIndex++].onclick=() => showScores(i , -1)
+    }
+    
+    console.log(h3Array)
+    function showScores(i , change){
+      console.log("ShowScores Invoked")
+      let {innerText} = h3Array[i]
+      let {count} = h3Array[i].count
+      h3Array[i].innerText = h3Array[i].innerText.replace(h3Array[i].count , h3Array[i].count + change)
+      h3Array[i].count += change
+      total += change
+      document.title = total + " Errors Found!"
+    }
+
+    
+
+    console.log(h3Array)
+
+  </script>
+</body>
+</html>
