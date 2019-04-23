@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Clone the repo down
+1. Fork and clone down the repo
 2. Run `npm i'
 3. Run `nodemon` (You should see `Server is now listening on 3000` in your console)
 4. Open Postman
@@ -11,19 +11,22 @@
 
 ## Objectives
 
-Making small changes to the server code, see how many different errors and bugs you can cause, and how many different ways you can cause errors. Keep track of the number and types of errors you can cause. 
+Making small changes to the server code, see how many different errors and bugs you can cause, and how many different ways you can cause them. Keep track of the number and types of errors you cause. 
 
 NOTES:
 
 - Return to clean server after every test. You can use `git reset --hard` to discard all your changes.
 - Do not change the postman tests. Only change the server code.
 - Count every error, but try to get as many different bugs and errors as possible.
-- Try to predict what's going to happen before you run a test. This will help you remember the different errors.
-- You may often get a console error and a Postman error at the same time. Feel free to count both.
+- Try to predict what's going to happen before you run a test. For instance...
+ - Will you get a console error, a Postman error, or both?
+ - Which error status code will you get?
+ - Will the server crash?
+- You may get a console error and a Postman error at the same time. Feel free to count both.
 - A bug is when you don't get an error, but the outcome is incorrect. A few are listed below. Feel free to find others!
 - Get creative, and have fun!
 
-Review the errors list below to get started.
+Try to cause as many of the errors below as possible.
 
 # ERRORS 
 
